@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Globalization;
 using System.Configuration;
 
@@ -16,9 +13,6 @@ namespace BulkInsertHeaderDetail
         static DataSet _claimsDataSet = new DataSet();
         static int _currentHeaderId = 0;
 
-        /*
-         * Static Class Constructor
-         */
         static ClaimsDataSet()
         {
             _claimsDataSet.Tables.Add("Header");
@@ -58,7 +52,6 @@ namespace BulkInsertHeaderDetail
             DateTime workingDate;
             decimal workingAmount;
             string[] commaSeparatedValues = ParseCSVLine(rowContent);
-            Console.WriteLine("Just parsed header row from CSV file...");
             DataRow row = _claimsDataSet.Tables["Header"].NewRow();
 
             if (DateTime.TryParse(commaSeparatedValues[0], out workingDate))
@@ -73,6 +66,7 @@ namespace BulkInsertHeaderDetail
             }
             row["Beneficiary"] = commaSeparatedValues[1];
             row["ServiceProvider"] = commaSeparatedValues[2];
+            #region Don't include in example
             if (Decimal.TryParse(commaSeparatedValues[3], NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, null, out workingAmount))
             {
                 row["AmountPaid"] = workingAmount;
@@ -93,19 +87,18 @@ namespace BulkInsertHeaderDetail
                 Console.WriteLine(errorMessage);
                 throw new FormatException(errorMessage);
             }
+            #endregion
             _claimsDataSet.Tables["Header"].Rows.Add(row);
-            Console.WriteLine("Newly added header row id: " + row["Id"].ToString());
             _currentHeaderId = Int32.Parse(row["Id"].ToString());
             return _currentHeaderId;
         }
 
-        internal static int AddDetailRow(string rowContent)
+        internal static void AddDetailRow(string rowContent)
         {
             string errorMessage = "";
             DateTime workingDate;
             Decimal workingAmount;
             string[] commaSeparatedValues = ParseCSVLine(rowContent);
-            Console.WriteLine("Just parsed detail row from CSV file...");
             DataRow row = _claimsDataSet.Tables["Detail"].NewRow();
             row["HeaderId"] = _currentHeaderId;
             if (DateTime.TryParse(commaSeparatedValues[0], out workingDate))
@@ -120,6 +113,7 @@ namespace BulkInsertHeaderDetail
             }
             row["TariffCode"] = commaSeparatedValues[1];
             row["TariffDescription"] = commaSeparatedValues[2];
+            #region Don't include in example
             if (Decimal.TryParse(commaSeparatedValues[3], NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, null, out workingAmount))
             {
                 row["AmountPaid"] = workingAmount;
@@ -170,8 +164,8 @@ namespace BulkInsertHeaderDetail
                 Console.WriteLine(errorMessage);
                 throw new FormatException(errorMessage);
             }
+            #endregion
             _claimsDataSet.Tables["Detail"].Rows.Add(row);
-            return 1;
         }
 
         internal static void WriteToTargetDatabase()
@@ -183,7 +177,6 @@ namespace BulkInsertHeaderDetail
                 {
                     destinationConnection.Open();
                     ConnectionState destState = destinationConnection.State;
-                    Console.WriteLine("State of destination DB after calling open..." + destState.ToString());
                     SqlBulkCopy bulkCopy = new SqlBulkCopy(destinationConnection);
                     bulkCopy.ColumnMappings.Add("TreatmentDate", "TreatmentDate");
                     bulkCopy.ColumnMappings.Add("Beneficiary", "Beneficiary");
@@ -191,7 +184,7 @@ namespace BulkInsertHeaderDetail
                     bulkCopy.ColumnMappings.Add("AmountPaid", "AmountPaid");
                     bulkCopy.ColumnMappings.Add("AmountClaimed", "AmountClaimed");
 
-                    bulkCopy.DestinationTableName = "flatfile.ClaimHeader";
+                    bulkCopy.DestinationTableName = "dbo.ClaimHeader";
                     bulkCopy.WriteToServer(_claimsDataSet.Tables["Header"]);
 
                     bulkCopy.ColumnMappings.Clear();
@@ -204,7 +197,7 @@ namespace BulkInsertHeaderDetail
                     bulkCopy.ColumnMappings.Add("TariffAmount", "TariffAmount");
                     bulkCopy.ColumnMappings.Add("AmountPaidToProvider", "PaidToProvider");
                     bulkCopy.ColumnMappings.Add("AmountPaidToBeneficiary", "PaidToMember");
-                    bulkCopy.DestinationTableName = "flatfile.ClaimDetail";
+                    bulkCopy.DestinationTableName = "dbo.ClaimDetail";
                     bulkCopy.WriteToServer(_claimsDataSet.Tables["Detail"]);
                     destinationConnection.Close();
                 }

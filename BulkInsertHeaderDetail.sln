@@ -5,6 +5,14 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkInsertHeaderDetail", "BulkInsertHeaderDetail\BulkInsertHeaderDetail.csproj", "{E6014D90-D736-4638-BA6D-9E950DD6D8E6}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BulkInsertHeaderDetail_DBProject", "BulkInsertHeaderDetail_DBProject\BulkInsertHeaderDetail_DBProject.sqlproj", "{B9A0BB5C-7317-447C-B29D-1ECC4F56172B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example Data", "Example Data", "{C1268A4A-594D-463E-BD21-A6F319E11AF3}"
+	ProjectSection(SolutionItems) = preProject
+		Example Data\Medical Aid Claims.csv = Example Data\Medical Aid Claims.csv
+		Example Data\Medical Aid Claims.xlsx = Example Data\Medical Aid Claims.xlsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,12 @@ Global
 		{E6014D90-D736-4638-BA6D-9E950DD6D8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6014D90-D736-4638-BA6D-9E950DD6D8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6014D90-D736-4638-BA6D-9E950DD6D8E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A0BB5C-7317-447C-B29D-1ECC4F56172B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A0BB5C-7317-447C-B29D-1ECC4F56172B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A0BB5C-7317-447C-B29D-1ECC4F56172B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B9A0BB5C-7317-447C-B29D-1ECC4F56172B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A0BB5C-7317-447C-B29D-1ECC4F56172B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A0BB5C-7317-447C-B29D-1ECC4F56172B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

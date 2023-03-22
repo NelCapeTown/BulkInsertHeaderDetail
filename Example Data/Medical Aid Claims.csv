@@ -1,0 +1,29 @@
+﻿Treatment Date,Beneficiary,Provider,Paid,Claimed,,,,
+26 Feb 2023,John Doe,SUNNINGDALE PHARMACY,-495.54,-723.87,,,,
+Treatment Date,Tariff Code,Description,Paid,Claimed,Tariff,Paid To Provider,Paid To You,Remark
+26 Feb 2023,720913,Moxycyllin,-304.4,-304.4,-267.71,-304.4,0,This claim line has been reversed
+26 Feb 2023,720912,Moxycyllin,-173.05,-173.05,-149.66,-173.05,0,This claim line has been reversed
+26 Feb 2023,761079,Tylenol,-18.09,-246.42,-224.54,-18.09,0,This claim line has been reversed
+08 Jan 2023,John Doe,Dr J Peterson,2422.31,2422.31,,,,
+Treatment Date,Tariff Code,Description,Paid,Claimed,Tariff,Paid To Provider,Paid To You,Remark
+08 Jan 2023,3090,Intra- vitreal injection,1301.6,1301.6,788.9,1301.6,0,
+08 Jan 2023,706042,"AVASTIN VIAL, 4ML",650,650,4679.71,650,0,
+08 Jan 2023,179269,"PACK IVT, PREMIUM METAL SPECULUM",411.33,411.33,456.04,411.33,0,
+08 Jan 2023,743526,MIN OXYBUPROCAINE HCL (WAS MIN BENOXINAT,15.19,15.19,23.78,15.19,0,
+08 Jan 2023,561592,GLOVE BIOGEL M PAIR SIZE 6,32.1,32.1,43.39,32.1,0,
+08 Jan 2023,610136,EYE PAD EYCOPAD,12.09,12.09,11.36,12.09,0,
+31 Jan 2023,John Doe,Dr J Peterson,-312.09,-1301.6,,,,
+Treatment Date,Tariff Code,Description,Paid,Claimed,Tariff,Paid To Provider,Paid To You,Remark
+31 Jan 2023,3090,Intra- vitreal injection,-312.09,-1301.6,-788.9,-312.09,0,This claim line has been reversed
+03 Jan 2023,John Doe,Dr J Peterson,0,-1093.4,,,,
+Treatment Date,Tariff Code,Description,Paid,Claimed,Tariff,Paid To Provider,Paid To You,Remark
+03 Jan 2023,3028,Optical Coherent Tomography,0,-1093.4,-662.6,0,0,This claim line has been reversed
+16 Mar 2023,John Doe,SUNNINGDALE PHARMACY,526.61,554.63,,,,
+Treatment Date,Tariff Code,Description,Paid,Claimed,Tariff,Paid To Provider,Paid To You,Remark
+16 Mar 2023,715659,Gaviscon,526.61,554.63,526.61,526.61,0,Claimed amount has been reduced and paid at your scheme rate.
+24 Jan 2023,John Doe,SUNNINGDALE PHARMACY,0,246.42,,,,
+Treatment Date,Tariff Code,Description,Paid,Claimed,Tariff,Paid To Provider,Paid To You,Remark
+24 Jan 2023,761079,Tylenol,0,246.42,0,0,0,Awaiting authorisation and script
+08 Jan 2023,John Doe,Dr J Peterson,-1301.6,-1301.6,,,,
+Treatment Date,Tariff Code,Description,Paid,Claimed,Tariff,Paid To Provider,Paid To You,Remark
+08 Jan 2023,3090,Intra- vitreal injection,-1301.6,-1301.6,-788.9,-1301.6,0,This claim line has been reversed
