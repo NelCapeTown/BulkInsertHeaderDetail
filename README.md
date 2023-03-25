@@ -10,30 +10,31 @@ The example reads data from a flat file that consists of data describing claims 
 
 ![Excel Data](./Miscellaneous%20Files/Excel%20Workbook%20Downloaded.png)
 
-We open the Excel workbook, make sure that we have the desired worksheet selected and then save that worksheet as a CSV file. 
+We open the Excel workbook, make sure that we have the desired worksheet selected and that the columns are as follows:
 
-The flat CSV file contains a header row, followed by detail column headings, followed by one or many detail lines. We do a little manoeuvring to always process the line before the line we just read from the file, because if the line just read contains detail column headings, we know that the line before it contains the header information.
+1. Header
+   1. Treatment Date
+   2. Beneficiary
+   3. Provider
+   4. Paid
+   5. Claimed
+2. Detail
+   1. Treatment Date
+   2. Tariff Code
+   3. Description
+   4. Paid
+   5. Claimed
+   6. Tariff Amount
+   7. Paid to Provider
+   8. Paid to You
+   9. Remarks
+
+Then save that worksheet as a CSV file. 
+
+While processing the lines in the flat file, we do a little manoeuvring to always process the line before the line we just read from the file.  This is because if the line just read contains detail column headings, we know that the line before it contains the header information.
 
 ## Structure of the Solution
 
-This system is designed to manage medical insurance claims data. It includes functionality to import claims data from an Excel spreadsheet, process the data, and store it in a relational database.
+The solution consists of two projects and a folder containing example data. One of the projects is a SQL Database project that will create the database and tables required for the example.  The other project is a console application that will read the data from the flat file and insert it into the database.
 
-## Importing Claims Data
-
-To import claims data, navigate to the customer service website of the medical insurance company and download the claims data Excel file. Once downloaded, open the file to review the data and ensure it is formatted correctly.
-
-## Processing Claims Data
-
-To process the claims data, use the ClaimsDataSet class provided in this system. The ClaimsDataSet class includes two DataTable classes, "Header" and "Detail", which represent the header and detail information for each claim.
-
-To manage the relationship between the two DataTable classes, add them to a System.Data.DataSet class. Then, add the columns for each DataTable in memory and indicate how the IDENTITY columns should be populated. Finally, specify the foreign key constraint to link the Header and Detail tables.
-
-## Storing Claims Data
-
-Once the claims data has been processed, it can be stored in a relational database. This system uses SQL Server as the database platform, and includes functionality to create the necessary database objects and tables.
-
-![Database Diagram](placeholder_database_image.png)
-
-## Conclusion
-
-The Medical Insurance Claims Processing System provides a simple yet powerful tool for managing medical insurance claims data. By importing, processing, and storing claims data in a relational database, this system streamlines the claims processing workflow and helps ensure accurate and timely payments.
+The `Example Data` folder contains a CSV file that can be used to test the example.  The Excel workbook used to create the CSV file is also included in the folder.
