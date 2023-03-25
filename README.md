@@ -29,7 +29,7 @@ We open the Excel workbook, make sure that we have the desired worksheet selecte
    8. Paid to You
    9. Remarks
 
-Then save that worksheet as a CSV file. 
+Then save that worksheet as a CSV file.
 
 While processing the lines in the flat file, we do a little manoeuvring to always process the line before the line we just read from the file.  This is because if the line just read contains detail column headings, we know that the line before it contains the header information.
 
